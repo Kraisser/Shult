@@ -1,0 +1,38 @@
+#contactContainer {
+	margin: 10px auto;
+	width: 70%;
+	height: 500px;
+	border-radius: 3px;
+	border: solid 3px #696969;
+	padding: 10px 10px 0;
+	position: relative;
+}
+#contactContainer form {
+	height: 350px;
+	display: flex;
+	flex-direction: column;
+}
+#contactContainer form label {
+	margin: 5px;
+}
+#userMessageFeedback {
+	height: 100%;
+	resize: none;
+}
+#contactContainer h3 {
+	margin: 0 0 10px;
+	text-align: center;
+}
+#resultSend {
+	width: 100%;
+	height: 90px;
+	text-align: center;
+}
+#send {
+	position: relative;
+	left: 10px;
+	width: 120px;
+	height: 30px;
+	margin: 10px auto;
+	background-color: #C0C0C0;
+}

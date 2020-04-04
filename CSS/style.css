@@ -1,0 +1,192 @@
+body {
+	background-image: url(../Res/images/brainBackground.jpg);
+}
+
+#mainContent {
+	height: 100%;
+	width: 80vw;
+	background-color: #DCDCDC;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 200px;
+	left: 10vw;
+	border-radius: 3px;
+	border: solid #696969 3px;
+}
+.gameRow {
+	position: relative;
+	margin: 1vh 1vh 0;
+	padding: 1vh;
+	height: 68%;
+	border: solid black 1px;
+	border-radius: 5px;
+	overflow-y: auto;
+}
+.gameContainer {
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin: 10px;
+}
+.gameContainer img {
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+}
+.gameRow h2 {
+	margin: 0;
+	text-align: center;
+}
+.startGameButs {
+	float: right;
+	width: 150px;
+	height: 40px;
+	border: solid grey 1px;
+	border-radius: 3px;
+	background-color: #32CD32;
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 700;
+	margin: 10px;
+}
+.startGameButs:focus {
+	outline: none;
+}
+.startGameButs:active {
+	border: solid grey 2px;
+}
+.startGameButs:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+/*Menu*/
+.menuHamburger {
+    display: none;
+    width: 50px;
+    height: 60px;
+    right: 10px;
+    position: absolute;
+    cursor: pointer;
+}
+.menuHamburger span {
+    display: block;
+    position: absolute;
+    height: 9px;
+    width: 100%;
+    background: #2F4F4F;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+.menuHamburger span:nth-child(1) {
+    top: 11px;
+}
+.menuHamburger span:nth-child(2), 
+.menuHamburger span:nth-child(3) {
+    top: 25px;
+}
+.menuHamburger span:nth-child(4) {
+    top: 39px;
+}
+
+#menu.menu_state_open .menuHamburger span:nth-child(1) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+}
+
+#menu.menu_state_open .menuHamburger span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+#menu.menu_state_open .menuHamburger span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+#menu.menu_state_open .menuHamburger span:nth-child(4) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+}
+.hamburgerOpen {
+	display: none;
+}
+
+
+@media screen and (max-width: 470px) {
+	#menu a.buts {
+		display: none;
+	}
+	.menuHamburger{
+	    display: inline-block;
+	}	  
+	#menu.menu_state_open .hamburgerOpen {
+	    display: block;  
+	}
+	.hamburgerOpen {
+	    position: fixed;
+	    display: none;
+	    top: 180px;
+	    right: 0;
+	    left: 0;
+	    background-color: rgba(105, 105, 105, 0.9);
+	    z-index: 1000;
+	    overflow: auto;
+	}
+	.hamburgerOpenItem {
+	    display: block;
+	    padding: 10px 0;
+	    text-align: center;
+	    color: black;
+	    font-size: 20px;
+	    font-weight: 700;
+	    text-decoration: none;
+	}
+}
+/**/
+
+/*Media*/
+@media only all and (max-width: 760px) {
+	#mainContent {
+		top: 191px;
+		left: 0;
+		width: 100%;
+		border: none;
+		border-radius: 0;
+	}
+}
+@media only all and (max-width: 600px) {
+	.gameContainer {
+		width: 200px;
+		height: 200px;
+	}
+	.gameRow {
+		margin: 0;
+	}
+}
+@media only all and (max-width: 400px) {
+	#mainContent {
+		top: 169px;
+		border-bottom: solid #696969 2px;
+	}
+	.hamburgerOpen {
+		top: 160px;
+	}	
+	.gameRow p {
+		margin: 5px;
+	}
+}
+@media only all and (max-width: 360px) {
+	.gameContainer {
+		float: none;
+		margin: auto;
+	}
+}

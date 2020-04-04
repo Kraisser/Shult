@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Main Page</title>
+	<link rel="stylesheet" type="text/css" href="CSS/normalise.css">
+	<link rel="stylesheet" type="text/css" href="CSS/headerFooter.css">
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<link rel="stylesheet" type="text/css" href="CSS/result.css">
+	<link rel="stylesheet" type="text/css" href="CSS/tableShult.css">
+	<link rel="stylesheet" type="text/css" href="CSS/contact.css">
+</head>
+<body>
+	<header class="header">
+		<div class="logo">
+			<h1><span data-href="main" data-link="true" class="logoBrain">Brain</span><span data-href="main" data-link="true" class="logoJet">Jet</span></h1>
+			<h2>Project</h2>
+		</div>
+		<div class="userLogin">
+			<div id="userName">Нажмите для входа</div>
+			<button id="signIn" class="regButs">Войти</button>
+			<img src="Res/Icons/stat.png" alt="Stat" id="statIcon">
+		</div>
+		<nav id="menu">
+			<a href="main" id="mainBut" class="buts" data-link="true">Главная</a>
+			<a href="results" id="resBut" class="buts" data-link="true">Таблица результатов</a>
+			<a href="contacts" id="contactBut" class="buts" data-link="true">Контакты</a>
+			<div class="menuHamburger" id="hamburger">
+			      <span></span>
+			      <span></span>
+			      <span></span>
+			      <span></span>
+			</div>
+			<div class="hamburgerOpen">
+		        <a class="hamburgerOpenItem" href="main" data-link="true">Главная</a>
+		        <a class="hamburgerOpenItem" href="results" data-link="true">Таблица результатов</a>
+		        <a class="hamburgerOpenItem" href="contacts" data-link="true">Контакты</a>
+		    </div>
+		</nav>
+	</header>
+	
+	<main id="mainContent"></main>
+
+	<footer class="footer">
+		<p><b>&copy; BrainJet Gaiko</b></p>
+	</footer>
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+<script defer type="text/javascript" src="./JS/fireBase.js"></script>
+<script defer type="text/javascript" src="./JS/mainScript.js"></script>
+<script defer type="text/javascript" src="./JS/tableShults.js"></script>
+<script defer type="text/javascript" src="./JS/contacts.js"></script>
+</body>
+</html>
