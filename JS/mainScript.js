@@ -89,8 +89,7 @@ const spaLogic = {
 			  <label><b>Опишите проблему:</b></label>
 			  <textarea name="message" id="userMessageFeedback"></textarea>
 
-			  <button id="send">Submit</button>
-			  <p id="my-form-status"></p>
+			  <button id="send">Отправить</button>
 			</form>
 			<div id="resultSend"></div>
 			</div>`,
