@@ -2,7 +2,7 @@ let overlay = document.getElementById(`overlay`);
 let ui = {
 	navMenu: document.getElementById(`menu`),
 	adoptMenu: document.querySelectorAll(`.hamburgerOpenItem`),
-	mainContent: document.getElementById(`mainContent`)
+	mainContent: document.getElementById(`mainContent`),
 };
 
 const spaLogic = {
@@ -12,15 +12,15 @@ const spaLogic = {
 	gameContent: {
 		tableShult: {
 			title: `Таблица Шульте`,
-			content: `<div id="tableShultContainer" class="gameMainContainer"></div>`
+			content: `<div id="tableShultContainer" class="gameMainContainer"></div>`,
 		},
 		canvasReact: {
 			title: `Canvas React`,
 			content: `<div id="canvasReactContainer" class="gameMainContainer">
 			<canvas id="canvasReactTimer"></canvas>
 			<canvas id="canvasReact"></canvas>
-			</div>`
-		}
+			</div>`,
+		},
 	},
 	content: {
 		main: {
@@ -41,8 +41,8 @@ const spaLogic = {
 					</p>
 					<p><b>ВНИМАНИЕ</b> Результат записывается если не допущено ни одной ошибки и только в классическом режиме</p>
 
-					<a href="tableShult" data-link="true" class="startGameButs">Начать игру</a>
-			</div>`
+					<a href="tableShult" data-link="true" class="startGameButs clearfix">Начать игру</a>
+			</div>`,
 		},
 		results: {
 			title: `Таблица результатов`,
@@ -70,7 +70,7 @@ const spaLogic = {
 					</div>
 				</div>
 			</div>
-			</div>`
+			</div>`,
 		},
 		contacts: {
 			title: `Контакты`,
@@ -93,18 +93,21 @@ const spaLogic = {
 			  <p id="my-form-status"></p>
 			</form>
 			<div id="resultSend"></div>
-			</div>`
+			</div>`,
 		},
 		error: {
 			title: `Ошибка`,
-			content: `<p>Тут делать нечего, уходите.</p>`
-		}
+			content: `<p>Тут делать нечего, уходите.</p>`,
+		},
 	},
-	updateState: function(event) {
+	updateState: function (event) {
 		event.preventDefault();
 		event.stopPropagation();
 
-		let page = event.target.getAttribute(`href`) || event.target.getAttribute(`data-but-href`) || event.target.getAttribute(`data-href`);
+		let page =
+			event.target.getAttribute(`href`) ||
+			event.target.getAttribute(`data-but-href`) ||
+			event.target.getAttribute(`data-href`);
 
 		let check = spaLogic.loadPage(page);
 
@@ -112,7 +115,7 @@ const spaLogic = {
 			history.pushState({page: page}, null, spaLogic.host);
 		}
 	},
-	loadPage: function(page) {
+	loadPage: function (page) {
 		if (page === spaLogic.state.page) {
 			return false;
 		}
@@ -149,31 +152,34 @@ const spaLogic = {
 		}
 		return true;
 	},
-	updateButtons: function() {
-    	let menuLinks = ui.navMenu.querySelectorAll('.buts');
+	updateButtons: function () {
+		let menuLinks = ui.navMenu.querySelectorAll('.buts');
 
-    	for (let i = 0; i < menuLinks.length; i++) {
-    		if (spaLogic.state.page === menuLinks[i].getAttribute('href') || spaLogic.state.page === ui.adoptMenu[i].getAttribute('href')) {
-    			ui.adoptMenu[i].classList.add(`selectedButAdopt`);
+		for (let i = 0; i < menuLinks.length; i++) {
+			if (
+				spaLogic.state.page === menuLinks[i].getAttribute('href') ||
+				spaLogic.state.page === ui.adoptMenu[i].getAttribute('href')
+			) {
+				ui.adoptMenu[i].classList.add(`selectedButAdopt`);
 				menuLinks[i].classList.add('selectedBut');
-    		} else {
-    			ui.adoptMenu[i].classList.remove(`selectedButAdopt`);
-    			menuLinks[i].classList.remove('selectedBut');
-    		}
-    	}
-    },
-    popstate: function(event) {
-    	let page = (event.state && event.state.page) || spaLogic.mainPage;
+			} else {
+				ui.adoptMenu[i].classList.remove(`selectedButAdopt`);
+				menuLinks[i].classList.remove('selectedBut');
+			}
+		}
+	},
+	popstate: function (event) {
+		let page = (event.state && event.state.page) || spaLogic.mainPage;
 		spaLogic.loadPage(page);
-    },
-    menuHamburger: function() {
-    	event.currentTarget.parentNode.classList.toggle('menu_state_open');
-    },
-    removeAdopt: function() {
-    	document.getElementById(`menu`).classList.remove(`menu_state_open`);
-    },
-	init: function() {
-		document.addEventListener('click', function(event) {
+	},
+	menuHamburger: function () {
+		event.currentTarget.parentNode.classList.toggle('menu_state_open');
+	},
+	removeAdopt: function () {
+		document.getElementById(`menu`).classList.remove(`menu_state_open`);
+	},
+	init: function () {
+		document.addEventListener('click', function (event) {
 			if (event.target.getAttribute(`data-link`) === `true`) {
 				spaLogic.updateState(event);
 			}
@@ -182,30 +188,30 @@ const spaLogic = {
 		document.getElementById(`hamburger`).addEventListener(`click`, spaLogic.menuHamburger);
 
 		let page = location.hash.slice(1) || spaLogic.mainPage;
-  		spaLogic.loadPage(page);
-    }
+		spaLogic.loadPage(page);
+	},
 };
-
 
 const authLogic = {
 	ui: {
 		signBut: null,
 		userName: null,
 		userInput: null,
-		nickname: null
-	},	
+		nickname: null,
+	},
 	sessionId: null,
 	userName: null,
 
-	setSessionId: function() {
-		const uuid =()=>'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-		.replace(/[xy]/g,(c, r) => ('x' == c ?(r = Math.random() * 16 | 0) : (r & 0x3 | 0x8))
-			.toString(16));
+	setSessionId: function () {
+		const uuid = () =>
+			'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c, r) =>
+				('x' == c ? (r = (Math.random() * 16) | 0) : (r & 0x3) | 0x8).toString(16)
+			);
 		authLogic.sessionId = uuid();
 		localStorage.setItem(`sessionId`, authLogic.sessionId);
 	},
 
-	saveUserName: function() {
+	saveUserName: function () {
 		if (authLogic.ui.nickname) {
 			authLogic.userName = authLogic.ui.nickname.innerText;
 		} else if (authLogic.ui.userInput) {
@@ -214,10 +220,10 @@ const authLogic = {
 		authLogic.sendUserName();
 	},
 
-	sendUserName: function() {
+	sendUserName: function () {
 		if (authLogic.userName) {
 			authLogic.showName();
-			firebaseApp.setUser(authLogic.userName, authLogic.sessionId);			
+			firebaseApp.setUser(authLogic.userName, authLogic.sessionId);
 			authLogic.ui.signBut.innerHTML = `Выйти`;
 			authLogic.ui.signBut.removeEventListener(`click`, authLogic.saveUserName);
 			authLogic.ui.signBut.removeEventListener(`click`, authLogic.changeName);
@@ -225,7 +231,7 @@ const authLogic = {
 		}
 	},
 
-	signOut: function() {
+	signOut: function () {
 		firebaseApp.signOutUser(authLogic.userName, authLogic.sessionId);
 		authLogic.ui.signBut.innerHTML = `Войти`;
 		authLogic.userName = null;
@@ -233,7 +239,7 @@ const authLogic = {
 		authLogic.ui.signBut.removeEventListener(`click`, authLogic.signOut);
 	},
 
-	changeName: function(event) {
+	changeName: function (event) {
 		if (event.target === authLogic.ui.userName) {
 			authLogic.ui.userName.innerHTML = `<input type="text" id="userInput" placeholder="Введите имя">`;
 			authLogic.ui.userInput = document.getElementById(`userInput`);
@@ -243,7 +249,7 @@ const authLogic = {
 		}
 	},
 
-	showName: function(event) {
+	showName: function (event) {
 		if (event && event.target.value) {
 			authLogic.ui.userName.innerHTML = `<b id="nickname">${event.target.value}</b>`;
 			authLogic.ui.nickname = document.getElementById(`nickname`);
@@ -254,7 +260,7 @@ const authLogic = {
 		}
 	},
 
-	init: function() {
+	init: function () {
 		authLogic.ui.signBut = document.getElementById(`signIn`);
 		authLogic.ui.userName = document.getElementById(`userName`);
 		if (!!authLogic.ui.userName) {
@@ -266,24 +272,24 @@ const authLogic = {
 			authLogic.sessionId = localStorage.getItem(`sessionId`);
 		}
 		firebaseApp.checkUser(authLogic.sessionId);
-	}
-}
+	},
+};
 
 const stat = {
 	ui: {
 		openStat: null,
 		closeStat: null,
 		statWindow: null,
-		content: null
+		content: null,
 	},
 
 	cvs: {
 		width: null,
-		height: null
+		height: null,
 	},
 	resultsObj: null,
 
-	openWindow: function() {
+	openWindow: function () {
 		if (authLogic.userName) {
 			document.body.insertAdjacentHTML(`beforeend`, `<div id="statWindow"></div>`);
 			stat.ui.statWindow = document.getElementById(`statWindow`);
@@ -297,7 +303,7 @@ const stat = {
 		}
 	},
 
-	createCanvas: function() {		
+	createCanvas: function () {
 		for (let i = 4; i < 9; i++) {
 			stat.ui.content.insertAdjacentHTML(`beforeend`, `<canvas id="stat${i}x${i}"></canvas>`);
 			let cvs = document.getElementById(`stat${i}x${i}`);
@@ -309,28 +315,33 @@ const stat = {
 			ctx.fillRect(25, stat.cvs.height - 30, stat.cvs.width, 1.5);
 			ctx.fillRect(25, stat.cvs.height - 30, 1.5, -stat.cvs.height);
 			for (let i2 = 1; i2 < 10; i2++) {
-				ctx.fillRect(24, ((stat.cvs.height - 30) / 10 * i2), 4.5, 1.5);
+				ctx.fillRect(24, ((stat.cvs.height - 30) / 10) * i2, 4.5, 1.5);
 			}
 			if (stat.resultsObj[`arr${i}x${i}`]) {
 				for (let i3 = 1; i3 <= stat.resultsObj[`arr${i}x${i}`].length; i3++) {
-					ctx.fillRect((stat.cvs.width - 8) / stat.resultsObj[`arr${i}x${i}`].length * i3, stat.cvs.height - 30, 1.5, -4.5);
+					ctx.fillRect(
+						((stat.cvs.width - 8) / stat.resultsObj[`arr${i}x${i}`].length) * i3,
+						stat.cvs.height - 30,
+						1.5,
+						-4.5
+					);
 				}
 				stat.fillGraphic(`${i}x${i}`);
-			}						
-			stat.fillText(ctx ,`${i}x${i}`);
+			}
+			stat.fillText(ctx, `${i}x${i}`);
 		}
 	},
 
-	fillText: function(ctx, size) {
+	fillText: function (ctx, size) {
 		let percent = 110;
 		for (let i = 0; i <= 10; i++) {
 			ctx.textAlign = `center`;
-			ctx.fillText(`${percent -= 10}%`, 12, ((stat.cvs.height - 30) / 9 * i));
+			ctx.fillText(`${(percent -= 10)}%`, 12, ((stat.cvs.height - 30) / 9) * i);
 		}
 		ctx.fillText(`${size}`, 50, 15);
 	},
 
-	fillGraphic: function(size) {
+	fillGraphic: function (size) {
 		let goodTime;
 		if (size === `4x4`) {
 			goodTime = 350;
@@ -347,10 +358,10 @@ const stat = {
 		let ctx = document.getElementById(`stat${size}`).getContext(`2d`);
 		ctx.beginPath();
 		ctx.strokeStyle = `red`;
-		ctx.moveTo(25,  stat.cvs.height - 30);
+		ctx.moveTo(25, stat.cvs.height - 30);
 		for (let i = 0; i < stat.resultsObj[`arr${size}`].length; i++) {
 			let x = (stat.cvs.width - 8) / stat.resultsObj[`arr${size}`].length,
-				y = goodTime * +(`0.${stat.resultsObj[`arr${size}`][i].split(`:`).join(``)}`) * 10;
+				y = goodTime * +`0.${stat.resultsObj[`arr${size}`][i].split(`:`).join(``)}` * 10;
 			ctx.lineTo(x * (i + 1), y);
 			ctx.arc(x * (i + 1), y, 1.5, 0, Math.PI * 2, true);
 			ctx.fillText(stat.resultsObj[`arr${size}`][i], x * (i + 1) - 30, y - 10);
@@ -359,21 +370,21 @@ const stat = {
 		ctx.closePath();
 	},
 
-	closeStat: function() {
+	closeStat: function () {
 		if (stat.ui.statWindow) {
 			stat.ui.statWindow.remove();
 		}
 	},
 
-	noInfo: function() {
+	noInfo: function () {
 		stat.ui.content.innerHTML = `<p>Вы не сыграли ни одной игры</p>`;
 	},
 
-	init: function() {
+	init: function () {
 		stat.ui.openStat = document.getElementById(`statIcon`);
 		stat.ui.openStat.addEventListener(`click`, stat.openWindow);
-	}
-}
+	},
+};
 
 window.addEventListener(`resize`, stat.adoptStat);
 document.addEventListener('DOMContentLoaded', spaLogic.init);
