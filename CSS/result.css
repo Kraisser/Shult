@@ -1,37 +1,33 @@
 #bestResults {
-	height: fit-content;
-	background-color: yellow;
-	margin: 1vh;
+	background-color: var(--main-color);
 	border-radius: 8px;
 	position: relative;
-	height: 70%;
 	overflow-y: auto;
+	padding: 20px;
+	margin-bottom: 30px;
 }
 .bestResultsHeader {
-	margin: 0 10px 8px;
+	margin-bottom: 10px;
 	text-align: center;
-	border-bottom: solid 1px black;
 }
 .bestResultsHeader h2 {
-	margin: 5px 0;
+	margin: 0;
 }
 #bestResultsShult {
-	margin: 0 50% 3px;
-	transform: translate(-50%);
-	width: 98%;
-	height: 92%;
 	background-color: white;
-	border-radius: 5px;	
+	border-radius: 5px;
 	overflow-y: auto;
 	overflow-x: hidden;
+	padding: 5px;
 }
 .resultHeader {
 	margin: 0;
-	text-align: center;	
+	text-align: center;
 	border-bottom: solid 1px black;
+	padding: 5px 0;
 }
 .resultHeader h3 {
-	margin: 0 0 3px;
+	margin: 0;
 }
 
 .resultColumnContainer {
@@ -40,19 +36,33 @@
 .resultColumn {
 	flex-grow: 1;
 	text-align: center;
-	border-top-style: none;
+	padding-top: 10px;
+	border-right: solid 1px #000;
+	border-left: solid 1px #000;
+	border-bottom: solid 1px black;
 	border-collapse: collapse;
 }
 .resultColumnH4 {
-	margin: 5px 0 0;
+	margin: 0;
+	padding-bottom: 10px;
+	border-bottom: solid 1px #000;
 }
 .docData {
 	margin-top: 5px;
 }
 
 /*Media*/
+@media only all and (max-width: 500px) {
+	#bestResults {
+		margin-bottom: 0;
+		padding: 10px;
+	}
+}
 @media only all and (max-width: 400px) {
 	#bestResults {
 		margin: 0;
+	}
+	.resultColumnContainer {
+		display: block;
 	}
 }

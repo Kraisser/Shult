@@ -199,14 +199,3 @@ body {
 		padding: 0 15px 15px;
 	}
 }
-@media only all and (max-width: 400px) {
-	#mainContent {
-		border-bottom: solid #696969 3px;
-	}
-}
-@media only all and (max-width: 360px) {
-	.gameContainer {
-		/* float: none;
-		margin: auto; */
-	}
-}
