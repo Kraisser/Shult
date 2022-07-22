@@ -1,8 +1,6 @@
 @import './variables.css';
 
 .header {
-	/* z-index: 50;
-	margin-bottom: 1vh; */
 	position: relative;
 	padding: 20px 20px 0;
 	border-radius: 3px 3px 0 0;
@@ -81,40 +79,44 @@
 #statWindow {
 	z-index: 100;
 	position: fixed;
-	right: 3px;
-	width: 400px;
-	top: 1%;
-	height: fit-content;
+	right: 10px;
+	top: 10px;
+	left: 10px;
 	border-radius: 3px;
-	background-color: yellow;
+	background-color: var(--main-color);
+	padding: 10px;
+	display: grid;
+	grid-gap: 10px;
 }
 #statWindow h3 {
 	text-align: center;
-	margin-top: 10px;
+	margin: 0;
 }
 #closeStat {
 	position: absolute;
-	top: 2px;
+	top: 10px;
 	right: 10px;
-	padding: 1px;
-	background-color: #c0c0c0;
+	padding: 2px;
+	height: 25px;
+	background-color: var(--but-color);
 	cursor: pointer;
+	transition: all 0.2s ease;
 }
-#statIcon:active {
+#statIcon:active,
+#closeStat:active {
 	transform: scale(0.95);
 }
-#closeStat:active {
-	border: none;
-	top: 3px;
-}
 #statContent {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 400px);
+	justify-content: center;
+	grid-gap: 10px;
 	z-index: 120;
-	position: relative;
-	width: 395px;
-	left: 3px;
-	bottom: 3px;
+	width: 100%;
+	overflow-y: auto;
+}
+#statContent canvas {
 	background-color: white;
-	height: fit-content;
 }
 
 #menu {
@@ -204,15 +206,21 @@
 		margin-bottom: 15px;
 	}
 	#statWindow {
-		width: 300px;
+		/* width: 300px; */
 	}
 	#statContent {
-		width: 295px;
+		grid-template-columns: repeat(auto-fit, 100%);
+		justify-items: center;
 	}
 	#statContent canvas {
-		width: 293px;
+		width: 90%;
 	}
 	.footer {
 		position: relative;
+	}
+}
+@media only all and (max-width: 400px) {
+	#statContent canvas {
+		width: 100%;
 	}
 }
